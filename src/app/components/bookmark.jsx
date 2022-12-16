@@ -12,10 +12,7 @@ const Bookmark = ({ status, ...rest }) => {
     // };
 
     return (
-        <button
-            {...rest}
-            // className="btn btn-light btn-outline-dark"
-        >
+        <button {...rest}>
             <i className={"bi bi-bookmark" + (status ? "-heart-fill" : "")}></i>
             {/* <i className={getBookmarkClasses(status)}></i> */}
         </button>
