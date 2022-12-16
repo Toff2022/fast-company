@@ -35,7 +35,6 @@ const User = ({
             <td>
                 <Bookmark
                     status={bookmark}
-                    // id={_id}
                     onClick={() => onToggleBookMark(_id)}
                 />
             </td>

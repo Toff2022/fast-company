@@ -41,7 +41,7 @@ const Users = ({ users: allUsers, ...rest }) => {
         : allUsers;
 
     const count = filteredUsers.length;
-    const sortedUsers = _.orderBy(filteredUsers, [sortBy.iter], [sortBy.order]); // 1парам - [] что сортируем, 2й - [] параметров, по к-м сортируем, 3й [] - порядок сортировки asc - по алфавиту(в порядке возврастания) или desc;
+    const sortedUsers = _.orderBy(filteredUsers, [sortBy.path], [sortBy.order]); // 1парам - [] что сортируем, 2й - [] параметров, по к-м сортируем, 3й [] - порядок сортировки asc - по алфавиту(в порядке возврастания) или desc;
     const usersCrop = paginate(sortedUsers, currentPage, pageSize);
     const clearFilter = () => {
         setSelectedProf();
