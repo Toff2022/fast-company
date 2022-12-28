@@ -9,10 +9,10 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
                     ...selectedSort,
                     order: selectedSort.order === "asc" ? "desc" : "asc"
                 },
-                console.log("selectedSort", selectedSort)
+                // console.log("selectedSort", selectedSort)
             );
         } else {
-            console.log("selectedSort_else", selectedSort);
+            // console.log("selectedSort_else", selectedSort);
             onSort({ path: item, order: "asc" });
         }
     };
@@ -46,21 +46,7 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
                     </th>
                 ))}
 
-                {/* <th scope="col">Качества</th>
-            <th onClick={() => handleSort("profession.name")} scope="col">
-                Профессия
-            </th>
-            <th onClick={() => handleSort("completedMeetings")} scope="col">
-                Встретился, раз
-            </th>
-            <th onClick={() => handleSort("rate")} scope="col">
-                Оценка
-            </th>
-            <th onClick={() => handleSort("bookmark")} scope="col">
-                Избранное
-            </th>
-            <th /> */}
-            </tr>
+             </tr>
         </thead>
     );
 };
@@ -72,7 +58,3 @@ TableHeader.propTypes = {
 };
 export default TableHeader;
 
-{
-    /* <i className="bi bi-caret-up-fill"></i>
-<i className="bi bi-caret-down-fill"></i> */
-}
