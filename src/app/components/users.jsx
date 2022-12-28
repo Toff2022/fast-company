@@ -58,7 +58,7 @@ const Users = () => {
           )
         : users;
     if (users) {
-        console.log('users', users)
+        // console.log('users', users)
         const count = filteredUsers.length;
         const sortedUsers = _.orderBy(
             filteredUsers,

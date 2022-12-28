@@ -8,7 +8,7 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
                 {
                     ...selectedSort,
                     order: selectedSort.order === "asc" ? "desc" : "asc"
-                },
+                }
                 // console.log("selectedSort", selectedSort)
             );
         } else {
@@ -45,8 +45,7 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
                         {renderSortArrow(selectedSort, columns[column].path)}
                     </th>
                 ))}
-
-             </tr>
+            </tr>
         </thead>
     );
 };
@@ -57,4 +56,3 @@ TableHeader.propTypes = {
     columns: PropTypes.object.isRequired
 };
 export default TableHeader;
-

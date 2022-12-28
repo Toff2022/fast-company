@@ -1,8 +1,11 @@
-import React from 'react';
-
+import React from "react";
+import {useParams} from "react-router-dom"
 
 const UserPage = () => {
-    return ( <h1>User Page User Card</h1> );
-}
- 
+
+    const params = useParams()
+    console.log('params', params )
+    return <h1>User Page User Card</h1>;
+};
+
 export default UserPage;
