@@ -11,6 +11,7 @@ import _ from "lodash";
 const Users = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [professions, setProfession] = useState();
+    const [searchQuery, setSearchQuery] = useState(""); //состояние для поиска search..
     const [selectedProf, setSelectedProf] = useState();
     const [sortBy, setSortBy] = useState({ iter: "name", order: "asc" }); // передаём 2 парам-ра iter - параметр, в к-м передаём парам-р, по к-му будем сортир-ть; order - направление сортировки
     const pageSize = 8;
@@ -38,26 +39,34 @@ const Users = () => {
     }, []);
     useEffect(() => {
         setCurrentPage(1);
-    }, [selectedProf]);
+    }, [selectedProf, searchQuery]);
 
     const handleProfessionSelect = (item) => {
+        if (searchQuery !== "") setSearchQuery("");
         setSelectedProf(item);
     };
-
+    const handleSearchQuery = ({ target }) => {
+        setSelectedProf(undefined);
+        setSearchQuery(target.value);
+    };
     const handlePageChange = (pageIndex) => {
         setCurrentPage(pageIndex);
     };
     const handleSort = (item) => {
         setSortBy(item);
     };
-    const filteredUsers = selectedProf
-        ? users.filter(
-              (user) =>
-                  JSON.stringify(user.profession) ===
-                  JSON.stringify(selectedProf)
-          )
-        : users;
     if (users) {
+    const filteredUsers = searchQuery
+        ? users.filter((user) =>
+            user.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
+        : selectedProf
+        ? users.filter(
+            (user) =>
+                JSON.stringify(user.profession) ===
+                JSON.stringify(selectedProf)
+        )
+        : users;
+    
         // console.log('users', users)
         const count = filteredUsers.length;
         const sortedUsers = _.orderBy(
@@ -90,6 +99,12 @@ const Users = () => {
                 )}
                 <div className="d-flex flex-column">
                     <SearchStatus length={count} />
+                    <input
+                        type="text"
+                        name="searchQuery"
+                        placeholder="Seach..."
+                        onChange={handleSearchQuery}
+                    />
                     {count > 0 && (
                         <UserTable
                             users={usersCrop}
@@ -97,6 +112,7 @@ const Users = () => {
                             selectedSort={sortBy}
                             onDelete={handleDelete}
                             onToggleBookMark={handleToggleBookMark}
+                            value={searchQuery}
                         />
                     )}
                     <div className="d-flex justify-content-center">

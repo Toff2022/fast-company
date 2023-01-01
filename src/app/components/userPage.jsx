@@ -18,7 +18,6 @@ const UserPage = () => {
 
     const handleSelectOtherUser = () => {
         history.push("/users");
-        console.log("pushButton");
     };
     return (
         <>
@@ -31,6 +30,13 @@ const UserPage = () => {
                     <h2>Rate: {user.rate}</h2>
                 </div>
             )}
+            {!user && (
+                <div>
+                    {" "}
+                    <h1>Loading...</h1>
+                </div>
+            )}
+
             <div>
                 <button
                     className="btn btn-secondary mt-2"
@@ -43,7 +49,6 @@ const UserPage = () => {
             </div>
         </>
     );
-    // return "Loading...";
 };
 
 export default UserPage;
