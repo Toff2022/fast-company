@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import api from "../api";
-import QualitiesList from "./qualitieslist";
+import api from "../../../api";
+import QualitiesList from "../../ui/qualities/qualitieslist";
 
 const UserPage = () => {
     const history = useHistory();
