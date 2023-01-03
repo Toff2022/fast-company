@@ -6,6 +6,9 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
     const getInputClass = () => {
         return "form-control" + (error ? " is-invalid" : "");
     };
+    const handleChange = ({ target }) => {
+        onChange({ name: target.name, value: target.value })
+    };
     const toggleShowPassword = () => {
         //переключатель скрыть/показать пароль
         setShowPassword((prevState) => !prevState);
@@ -20,7 +23,7 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
                     id={name}
                     value={value}
                     name={name}
-                    onChange={onChange}
+                    onChange={handleChange}
                 />
                 {type === "password" && (
                     <button
