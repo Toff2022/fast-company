@@ -22,7 +22,7 @@ module.exports = {
                 named: "never"
             }
         ],
-
+        "multiline-ternary": ["off"],
         // Использование двойных кавычек
         quotes: ["error", "double", { allowTemplateLiterals: true }]
     }
