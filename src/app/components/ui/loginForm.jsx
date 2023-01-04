@@ -52,7 +52,7 @@ const LoginForm = () => {
         e.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        // console.log(data);
+        console.log(data);
     };
     return (
 
