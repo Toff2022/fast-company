@@ -12,12 +12,12 @@ const UserPage = ({ userId }) => {
     useEffect(() => {
         api.users.getById(userId).then((data) => setUser(data));
     }, []);
-    // console.log("user_data", user);
     const handleClick = () => {
         history.push(history.location.pathname + "/edit");
     };
-    // console.log("userByuserPage", user)
-    // console.log("userIdByuserPage", userId)
+    const handleClickAllUsers = () => {
+        history.push(history.location.pathname = "/users");
+    };
     if (user) {
         return (
             < div >
@@ -26,12 +26,22 @@ const UserPage = ({ userId }) => {
                 <h3> {<QualitiesList qualities={user.qualities} />}</h3>
                 <h5>CompletedMeetings: {user.completedMeetings}</h5>
                 <h2>Rate: {user.rate}</h2>
-                <button
-                    className="btn btn-secondary mt-2"
-                    onClick={handleClick}
-                >
-                    Изменить
-                </button>
+                <div className="d-grid gap-2 d-md-block">
+                    <button
+                        className="btn btn-primary " type="button"
+                        // className="btn btn-secondary mt-2"
+                        onClick={handleClick}
+                    >
+                        Изменить
+                    </button>
+                    <button
+                        className="btn btn-secondary mx-2" type="button"
+                        // className="btn btn-secondary mt-2 "
+                        onClick={handleClickAllUsers}
+                    >
+                        Все пользователи
+                    </button>
+                </div>
             </div>
         );
     } else {
