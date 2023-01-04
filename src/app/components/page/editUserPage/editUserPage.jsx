@@ -98,20 +98,6 @@ const EditUserPage = () => {
             }))
         );
     }, []);
-    useEffect(() => {
-        console.log("start");
-        API.users.getById(userId).then((data) => {
-            console.log("getByIdData", data)
-            console.log("typeOfuserID!", typeof userId)
-            console.log("userID!", userId)
-
-
-        })
-    }, [])
-    // console.log("typeOfuserID!", typeof userId)
-    // console.log("qualities", qualities)
-    // console.log("data", data)
-    // console.log("professions", professions)
 
     useEffect(() => {
         if (data._id) setIsLoading(false);

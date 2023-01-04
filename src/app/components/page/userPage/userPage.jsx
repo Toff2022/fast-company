@@ -10,7 +10,7 @@ const UserPage = ({ userId }) => {
     // const userId = params.userId;
     const [user, setUser] = useState();
     useEffect(() => {
-        api.users.getById(userId.slice(1)).then((data) => setUser(data));
+        api.users.getById(userId).then((data) => setUser(data));
     }, []);
     // console.log("user_data", user);
     const handleClick = () => {
