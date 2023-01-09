@@ -18,6 +18,9 @@ const UserPage = ({ userId }) => {
     const handleClickAllUsers = () => {
         history.push(history.location.pathname = "/users");
     };
+    console.log("user", user);
+    console.log("userProfession", user.profession.name);
+
     if (user) {
         return (
             < div >
