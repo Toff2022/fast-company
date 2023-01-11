@@ -1,5 +1,5 @@
 export function validator(data, config) {
-    const errors = {}
+    const errors = {};
     function validate(validateMethod, data, config) {
         let statusValidate;
         switch (validateMethod) {
@@ -7,33 +7,33 @@ export function validator(data, config) {
                 if (typeof data === "boolean") {
                     statusValidate = !data;
                 } else {
-                    statusValidate = data.trim() === ""
+                    statusValidate = data.trim() === "";
                 }
                 break;
             }
             case "isEmail": {
-                const emailRegExp = /^\S+@\S+\.\S+$/g
-                statusValidate = !emailRegExp.test(data)
+                const emailRegExp = /^\S+@\S+\.\S+$/g;
+                statusValidate = !emailRegExp.test(data);
                 break;
             }
             case "isCapitalSymbol": {
-                const CapitalRegExp = /[A-Z]+/g
-                statusValidate = !CapitalRegExp.test(data)
+                const CapitalRegExp = /[A-Z]+/g;
+                statusValidate = !CapitalRegExp.test(data);
                 break;
             }
             case "isContainDigit": {
-                const digitRegExp = /\d+/g
-                statusValidate = !digitRegExp.test(data)
+                const digitRegExp = /\d+/g;
+                statusValidate = !digitRegExp.test(data);
                 break;
             }
             case "min": {
-                statusValidate = data.length < config.value
+                statusValidate = data.length < config.value;
                 break;
             }
             default:
                 break;
         }
-        if (statusValidate) return config.message
+        if (statusValidate) return config.message;
     }
     for (const fieldName in data) {
         for (const validateMethod in config[fieldName]) {
@@ -41,11 +41,11 @@ export function validator(data, config) {
                 validateMethod,
                 data[fieldName],
                 config[fieldName][validateMethod]
-            )
+            );
             if (error && !errors[fieldName]) {
-                errors[fieldName] = error
+                errors[fieldName] = error;
             }
         }
     }
-    return errors
+    return errors;
 }

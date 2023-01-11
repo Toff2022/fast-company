@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import {paginate} from "../../../utils/paginate"
+import { paginate } from "../../../utils/paginate";
 import Pagination from "../../common/pagination";
 import api from "../../../api";
 import GroupList from "../../common/groupList";
@@ -11,7 +11,7 @@ import _ from "lodash";
 const UsersListPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [professions, setProfession] = useState();
-    const [searchQuery, setSearchQuery] = useState(""); //состояние для поиска search..
+    const [searchQuery, setSearchQuery] = useState(""); // состояние для поиска search..
     const [selectedProf, setSelectedProf] = useState();
     const [sortBy, setSortBy] = useState({ iter: "name", order: "asc" }); // передаём 2 парам-ра iter - параметр, в к-м передаём парам-р, по к-му будем сортир-ть; order - направление сортировки
     const pageSize = 8;
@@ -56,17 +56,17 @@ const UsersListPage = () => {
         setSortBy(item);
     };
     if (users) {
-    const filteredUsers = searchQuery
-        ? users.filter((user) =>
-            user.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
-        : selectedProf
-        ? users.filter(
-            (user) =>
-                JSON.stringify(user.profession) ===
-                JSON.stringify(selectedProf)
-        )
-        : users;
-    
+        const filteredUsers = searchQuery
+            ? users.filter((user) =>
+                user.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
+            : selectedProf
+                ? users.filter(
+                    (user) =>
+                        JSON.stringify(user.profession) ===
+                        JSON.stringify(selectedProf)
+                )
+                : users;
+
         // console.log('users', users)
         const count = filteredUsers.length;
         const sortedUsers = _.orderBy(

@@ -1,49 +1,32 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { useHistory } from "react-router-dom";
 import api from "../../../api";
-import QualitiesList from "../../ui/qualities/qualitieslist";
+import Comments from "../../ui/comments";
+import UserCard from "../../ui/userCard";
+import QualitiesCard from "../../ui/qualitiesCard";
+import MeetingsCard from "../../ui/meetingsCard";
+import BackHistoryButton from "../../common/backButton";
 
 const UserPage = ({ userId }) => {
-    const history = useHistory();
-    // const params = useParams();
-    // const userId = params.userId;
     const [user, setUser] = useState();
     useEffect(() => {
         api.users.getById(userId).then((data) => setUser(data));
     }, []);
-    const handleClick = () => {
-        history.push(history.location.pathname + "/edit");
-    };
-    const handleClickAllUsers = () => {
-        history.push(history.location.pathname = "/users");
-    };
-    console.log("user", user);
-    console.log("userProfession", user.profession.name);
-
     if (user) {
         return (
-            < div >
-                <h1>Имя: {user.name}</h1>
-                <h2>Профессия:{user.profession.name}</h2>
-                <h3> {<QualitiesList qualities={user.qualities} />}</h3>
-                <h5>CompletedMeetings: {user.completedMeetings}</h5>
-                <h2>Rate: {user.rate}</h2>
-                <div className="d-grid gap-2 d-md-block">
-                    <button
-                        className="btn btn-primary " type="button"
-                        // className="btn btn-secondary mt-2"
-                        onClick={handleClick}
-                    >
-                        Изменить
-                    </button>
-                    <button
-                        className="btn btn-secondary mx-2" type="button"
-                        // className="btn btn-secondary mt-2 "
-                        onClick={handleClickAllUsers}
-                    >
-                        Все пользователи
-                    </button>
+            < div className="container">
+                <div className="row gutters-sm">
+                    <div className="col-md-4 mb-3">
+                        <UserCard user={user} />
+                        <QualitiesCard data={user.qualities} />
+                        <MeetingsCard value={user.completedMeetings} />
+                        <div className="d-grid gap-2 d-md-block">
+                            <BackHistoryButton />
+                        </div>
+                    </div>
+                    <div className="col-md-8">
+                        <Comments />
+                    </div>
                 </div>
             </div>
         );
