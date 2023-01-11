@@ -2,8 +2,8 @@ import { orderBy } from "lodash";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../api";
-import CommentsList from "../common/comments";
-import AddCommentForm from "../common/comments/AddCommentForm";
+import CommentsList, { AddCommentForm } from "../common/comments";
+// import AddCommentForm from "../common/comments/AddCommentForm";
 
 const Comments = () => {
     const { userId } = useParams();
@@ -26,7 +26,7 @@ const Comments = () => {
             });
     };
     const sortedComments = orderBy(comments, ["created_at"], ["desc"]);
-    console.log("comments", comments);
+
     return (
         <>
             <div className="card mb-2">

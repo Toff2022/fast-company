@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import API from "../../../api";
-import { validator } from "../../../utils/validator";
+import api from "../../../api";
 import SelectField from "../form/selectField";
 import TextAreaField from "../form/textAreaField";
+import { validator } from "../../../utils/validator";
 import PropTypes from "prop-types";
 const initialData = { userId: "", content: "" };
 
@@ -34,7 +34,7 @@ const AddCommentForm = ({ onSubmit }) => {
         return Object.keys(errors).length === 0;
     };
     useEffect(() => {
-        API.users.fetchAll().then(setUsers);
+        api.users.fetchAll().then(setUsers);
     }, []);
     const clearForm = () => {
         setData(initialData);

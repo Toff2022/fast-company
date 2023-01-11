@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import API from "../../../api";
+import api from "../../../api";
 import { displayDate } from "../../../utils/displayDate";
 
 const Comment = ({
@@ -14,12 +14,11 @@ const Comment = ({
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
         setIsLoading(true);
-        API.users.getById(userId).then((data) => {
+        api.users.getById(userId).then((data) => {
             setUser(data);
             setIsLoading(false);
         });
     }, []);
-
     return (
         <div className="bg-light card-body  mb-3">
             <div className="row">
