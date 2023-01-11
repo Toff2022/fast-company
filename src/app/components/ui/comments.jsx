@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../api";
 import CommentsList, { AddCommentForm } from "../common/comments";
-// import AddCommentForm from "../common/comments/AddCommentForm";
 
 const Comments = () => {
     const { userId } = useParams();
@@ -15,15 +14,13 @@ const Comments = () => {
     }, []);
     const handleSubmit = (data) => {
         api.comments
-            .comments
             .add({ ...data, pageId: userId })
             .then((data) => setComments([...comments, data]));
     };
     const handleRemoveComment = (id) => {
-        api.comments
-            .comments.remove(id).then((id) => {
-                setComments(comments.filter((x) => x._id !== id));
-            });
+        api.comments.remove(id).then((id) => {
+            setComments(comments.filter((x) => x._id !== id));
+        });
     };
     const sortedComments = orderBy(comments, ["created_at"], ["desc"]);
 

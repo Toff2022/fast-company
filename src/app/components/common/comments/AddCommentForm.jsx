@@ -51,14 +51,14 @@ const AddCommentForm = ({ onSubmit }) => {
     const arrayOfUsers =
         users &&
         Object.keys(users).map((userId) => ({
-            name: users[userId].name,
+            label: users[userId].name,
             value: users[userId]._id
         }));
 
     return (
         <div>
             <h2>New Comment</h2>
-            <form action="" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <SelectField
                     onChange={handleChange}
                     options={arrayOfUsers}
